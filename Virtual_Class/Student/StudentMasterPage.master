@@ -1,0 +1,129 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="StudentMasterPage.master.cs" Inherits="Student_StudentMasterPage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <link rel="icon" href="/Images/title.ico" />
+
+    <script src="../Scripts/jquery-3.1.1.js"></script>
+    <script src="../Scripts/Sidenav.js"></script>
+    <script src="../Scripts/sweetalert.min.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            $("#abt").click(function (e) {
+                swal({
+                    title: "ABOUT",
+                    text: "<span style='color: #2B9FC4'> ©Virtual Class is a utility tool designed for a department of a college for managing student details by head of the department. <br> And it also provides many features for students. <span>",
+                    html: true
+                });
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(function () {
+            $("#contact").click(function (e) {
+                swal({
+                    title: "CONTACT",
+                    text: "<span style='color: #2B9FC4'> ©Virtual Class <br> Designed by : Ram Sharma <br> Mobile No. : 8898879938 <br> E-mail : ramsharma0194@gmail.com<span>",
+                    html: true
+                });
+            });
+        });
+    </script>
+
+    <style type="text/css">
+        #about {
+            width: 1200px;
+            padding: 0px;
+            background-color: gainsboro;
+            margin: auto;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            border: 1px solid #c4cddb;
+            border-top-color: #d3dbde;
+            border-bottom-color: #bfc9dc;
+            box-shadow: 0 1px 1px #ccc;
+            border-radius: 15px;
+            position: relative;
+            text-align: center;
+        }
+
+        #logout {
+            background: red;
+            width: 100px;
+            text-align: center;
+            vertical-align: top;
+            float: right;
+            margin: 30px;
+            color: darkred;
+        }
+
+        #userText {
+            float: right;
+            margin: 50px;
+        }
+
+        .logo {
+            text-align: left;
+        }
+
+        .sidenavElement {
+            width: 100%;
+        }
+
+        .auto-style1 {
+            color: #33CC33;
+            font-size: x-large;
+        }
+    </style>
+    <link href="../Style/Style.css" rel="stylesheet" />
+    <link href="../Style/Sidenav.css" rel="stylesheet" />
+    <link href="../Style/sweetalert.css" rel="stylesheet" />
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+
+<body style="vertical-align: top">
+
+    <form id="form1" runat="server">
+
+        <div class="logo">
+            <asp:Image ID="Image1" runat="server" Height="170px" ImageUrl="~/images/logo.png" Width="640px" />
+            <asp:LinkButton ID="logout" runat="server" CssClass="round" OnClick="logout_Click">LOGOUT</asp:LinkButton>
+            <asp:Label ID="userText" runat="server" CssClass="auto-style1"></asp:Label>
+        </div>
+
+        <div class="topnav">
+
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="/Student/Home.aspx" class="sidenavElement">Home</a><br />
+                <br />
+                <a href="/Student/ChangePassword.aspx" class="sidenavElement">Change Password</a>
+                <a id="abt" href="#" class="sidenavElement">About Us</a>
+                <a id="contact" href="#" class="sidenavElement">Contact</a>
+            </div>
+            <a onclick="openNav()">MENU</a>
+
+            <asp:LinkButton ID="viewDetails" runat="server" OnClick="viewDetails_Click">VIEW YOUR DETAILS</asp:LinkButton>
+
+            <asp:LinkButton ID="viewDocument" runat="server" OnClick="viewDocument_Click">DOCUMENT LIBRARY</asp:LinkButton>
+
+            <asp:LinkButton ID="viewAssignment" runat="server" OnClick="viewAssignment_Click" >VIEW ASSIGNMENTS</asp:LinkButton>
+
+            <asp:LinkButton ID="viewAttendance" runat="server" OnClick="viewAttendance_Click">CHECK ATTENDANCE</asp:LinkButton>
+
+        </div>
+
+        <div>
+            <asp:ContentPlaceHolder ID="Content" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+
+    </form>
+</body>
+</html>

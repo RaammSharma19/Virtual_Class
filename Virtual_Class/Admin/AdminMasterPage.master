@@ -1,0 +1,180 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="AdminMasterPage.master.cs" Inherits="Admin_MasterPage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <link rel="icon" href="/Images/title.ico" />
+
+    <script src="../Scripts/jquery-3.1.1.js"></script>
+    <script src="../Scripts/Sidenav.js"></script>
+    <script src="../Scripts/sweetalert.min.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            $("#abt").click(function (e) {
+                swal({
+                    title: "ABOUT",
+                    text: "<span style='color: #2B9FC4'> ©Virtual Class is a utility tool designed for a department of a college for managing student details by head of the department. <br> And it also provides many features for students. <span>",
+                    html: true
+                });
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(function () {
+            $("#contact").click(function (e) {
+                swal({
+                    title: "CONTACT",
+                    text: "<span style='color: #2B9FC4'> ©Virtual Class <br> Designed by : Ram Sharma <br> Mobile No. : 8898879938 <br> E-mail : ramsharma0194@gmail.com<span>",
+                    html: true
+                });
+            });
+        });
+    </script>
+
+    <style type="text/css">
+        #about {
+            width: 1200px;
+            padding: 0px;
+            background-color: gainsboro;
+            margin: auto;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            border: 1px solid #c4cddb;
+            border-top-color: #d3dbde;
+            border-bottom-color: #bfc9dc;
+            box-shadow: 0 1px 1px #ccc;
+            border-radius: 15px;
+            position: relative;
+            text-align: center;
+        }
+
+        #logout {
+            background: red;
+            width: 100px;
+            text-align: center;
+            vertical-align: top;
+            float: right;
+            margin: 30px;
+            color: darkred;
+        }
+
+        #userText {
+            float: right;
+            margin: 50px;
+        }
+
+        .logo {
+            text-align: left;
+        }
+
+        .sidenavElement {
+            width: 100%;
+        }
+
+        .auto-style1 {
+            color: #33CC33;
+            font-size: x-large;
+        }
+    </style>
+    <link href="../Style/Style.css" rel="stylesheet" />
+    <link href="../Style/Sidenav.css" rel="stylesheet" />
+    <link href="../Style/sweetalert.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body style="vertical-align: top">
+    <form id="form1" runat="server">
+        <div class="logo">
+            <asp:Image ID="Image1" runat="server" Height="170px" ImageUrl="~/images/logo.png" Width="640px" />
+            <asp:LinkButton ID="logout" runat="server" CssClass="round" OnClick="logout_Click">LOGOUT</asp:LinkButton>
+            <asp:Label ID="userText" runat="server" CssClass="auto-style1"></asp:Label>
+        </div>
+
+        <div class="topnav">
+
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="/Admin/Home.aspx" class="sidenavElement">Home</a>
+                <a href="/Admin/ChangePassword.aspx" class="sidenavElement">Change Password</a>
+                <a href="/AddressBook/ViewStudent.aspx" class="sidenavElement">View Registered Students</a>
+                <a href="/Admin/DeleteStudent.aspx" class="sidenavElement">Delete A student</a>
+                <a href="/Admin/CreateAdmin.aspx" class="sidenavElement">Create Co-Admin</a>
+                <a href="/Admin/ManageAdmin.aspx" class="sidenavElement">Manage Co-Admin</a>
+                <a id="abt" href="#" class="sidenavElement">About Us</a>
+                <a id="contact" href="#" class="sidenavElement">Contact</a>
+            </div>
+            <a onclick="openNav()">MENU</a>
+
+            <a href="/Admin/Register.aspx" title="Register a student">REGISTER</a>
+
+            <div class="dropdown">
+                <a class="dropbtn">ADRESS BOOK</a>
+                <div class="dropdown-content" style="margin: 50px 175px;">
+                    <a href="/AddressBook/EditAddressBook.aspx">Edit Address Book</a>
+                    <br />
+                    <a href="/AddressBook/ViewAddressBook.aspx">View Address Book</a><br />
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <a class="dropbtn">DOCUMENT LIBRARY</a>
+                <div class="dropdown-content" style="margin: 50px 388px;">
+                    <a href="/DocumentLibrary/AddDocument.aspx">Add Document</a>
+                    <br />
+                    <a href="/DocumentLibrary/ManageDocuments.aspx">Manage Documents</a><br />
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <a class="dropbtn">ASSIGNMENTS</a>
+                <div class="dropdown-content" style="margin: 50px 580px;">
+                    <a href="/Assignments/AssignTask.aspx">Assign Task</a>
+                    <br />
+                    <a href="/Assignments/UpdateAssignment.aspx">Update Status</a>
+                    <br />
+                    <a href="/Assignments/CheckStatus.aspx">Check Status</a><br />
+                    <a href="../Assignments/AssignmentViewSubject.aspx">Subject Wise Status</a>
+                    <br />
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <a class="dropbtn">ATTENDANCE</a>
+                <div class="dropdown-content" style="margin: 50px 735px; width: auto;">
+                    <a href="/Attendance/AttendanceForm.aspx">Update Details</a>
+                    <br />
+                    <a href="/Attendance/ViewAttendance.aspx">Report By Roll No.</a><br />
+                    <a href="/Attendance/view75less.aspx">Subject Wise Black List</a><br />
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <a class="dropbtn">INTERNAL EXAM</a>
+                <div class="dropdown-content" style="margin: 50px 895px; width: auto;">
+                    <a href="/InternalExam/UpdateMarks.aspx">Update Details</a>
+                    <br />
+                    <a href="/InternalExam/ViewInternalMarks.aspx">Report By Roll No.</a><br />
+                    <a href="/InternalExam/ViewSubWiseRep.aspx">Subject Wise Report</a><br />
+                </div>
+            </div>
+        </div>
+
+
+        <div>
+            <asp:ContentPlaceHolder ID="Content" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+
+
+        <div id="about">
+            <p>
+                <span class="li">Designed,Devoloped and Maintained by..</span><br />
+                <u><span class="lb">Ram Sharma</span></u>
+            </p>
+        </div>
+    </form>
+</body>
+</html>
